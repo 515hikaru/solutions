@@ -1,3 +1,6 @@
+"""
+このスクリプトは WA です。
+"""
 N = int(input())
 ab = []
 a_ap = ab.append
