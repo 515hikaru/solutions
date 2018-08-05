@@ -1,3 +1,6 @@
+"""
+WA になるやつ
+"""
 from copy import deepcopy
 
 def max_pop(ts, res):

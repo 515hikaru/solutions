@@ -1,3 +1,6 @@
+"""
+WA になる方針だけどコンテスト本番のときよりはきれいにかいたやつ
+"""
 from copy import deepcopy
 
 def max_get(ts, res):
