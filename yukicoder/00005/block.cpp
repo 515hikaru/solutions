@@ -1,3 +1,4 @@
+// https://yukicoder.me/problems/14
 #include <algorithm>
 #include <iostream>
 
