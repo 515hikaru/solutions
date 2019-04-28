@@ -30,7 +30,7 @@ func main() {
 		right[i] = gcd(right[i+1], as[i+1])
 	}
 	m := 1
-	for i := 0; i < n ; i ++ {
+	for i := 0; i < n; i++ {
 		mm := gcd(left[i], right[i])
 		if mm > m {
 			m = mm
