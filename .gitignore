@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 *.out
-=======
 # Prerequisites
 *.d
 
@@ -33,4 +31,4 @@
 *.exe
 *.out
 *.app
->>>>>>> Initial commit
+main
