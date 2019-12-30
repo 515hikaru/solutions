@@ -1,8 +1,15 @@
 #include <iostream>
 
 using namespace std;
-const int MAX = 10000;
-const int QMAX = 500;
+const int MAX = 10001;
+const int QMAX = 501;
+
+bool search(int *a, int n, int key) {
+    int i = 0;
+    a[n] = key;
+    while( a[i] != key) i++;
+    return i != n;
+}
 
 int main() {
     int n;
@@ -20,12 +27,7 @@ int main() {
     int count = 0;
     for (int i = 0; i < q; i++) {
         int c = T[i];
-        for(int j = 0; j < n; j++) {
-            if (S[j] == c) {
-                count++;
-                break;
-            }
-        }
+        if (search(S, n, c)) count++;
     }
     cout << count << endl;
 }
