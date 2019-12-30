@@ -1,6 +1,5 @@
 #include <iostream>
 
-int top = 0;
 
 void solve(std::string* names, int* times, int length, int q) {
     bool everyZero = false;
