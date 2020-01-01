@@ -31,10 +31,11 @@ int partition(struct Card *A, int p, int r) {
 }
 
 void quickSort(struct Card *A, int left, int right) {
-    if (left >= right) return;
+    if (left > right) return;
     int q = partition(A, left, right);
-    quickSort(A, left, q);
-    quickSort(A, q, right);
+    // cout << "left = " << left << ", right = " << right << ", q = " << q << endl;
+    quickSort(A, left, q - 1);
+    quickSort(A, q + 1, right);
 }
 
 int main() {
