@@ -33,7 +33,8 @@ int partition(struct Card *A, int p, int r) {
 void quickSort(struct Card *A, int left, int right) {
     if (left > right) return;
     int q = partition(A, left, right);
-    // cout << "left = " << left << ", right = " << right << ", q = " << q << endl;
+    // q の場所は既にソートが終わっているので
+    // q より左、および q より右の場所に関するソートをする必要がある
     quickSort(A, left, q - 1);
     quickSort(A, q + 1, right);
 }
