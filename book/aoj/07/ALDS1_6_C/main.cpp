@@ -1,18 +1,16 @@
-#include <iostream>
+#include <cstdio>
 #include <string>
-using namespace std;
 
 const int N = 100005;
 const long MAX = 2000000000;
 
 struct Card {
-    string name;
+    char name[10];
     int number;
 };
 
 
 void merge(struct Card *A, int left, int mid, int right) {
-    cout << "boo2: left = " << left << " right = " << right << endl;
     int n1 = mid - left;
     int n2 = right - mid;
     struct Card L[N / 2 + 3], R[N / 2 + 3];
@@ -36,11 +34,8 @@ void mergeSort(struct Card *A, int left, int right) {
     if (left + 1 < right) {
         int mid = (left + right) / 2;
         mergeSort(A, left, mid);
-        cout << "foo: left = " << left << " right = " << right << " mid = " << mid << endl;
         mergeSort(A, mid, right);
-        cout << "bar: left = " << left << " right = " << right << " mid = " << mid << endl;
         merge(A, left, mid, right);
-        cout << "boo: left = " << left << " right = " << right << " mid = " << mid << endl;
     }
 }
 
@@ -76,22 +71,23 @@ void quickSort(struct Card *A, int left, int right) {
 
 int main() {
     int n;
-    cin >> n;
+    scanf("%d", &n);
     struct Card A[N], B[N];
     for(int i = 0; i < n; i++) {
-        cin >> A[i].name >> A[i].number;
+        scanf("%s", A[i].name);
+        scanf("%d", &A[i].number);
         B[i] = A[i];
     }
     mergeSort(B, 0, n);
     quickSort(A, 0, n-1);
     bool flg = true;
     for(int i = 0; i < n; i++) {
-        if (B[i].name != A[i].name) flg = false;
+        if (B[i].name[0] != A[i].name[0]) flg = false;
     }
-    if (flg) cout << "Stable" << endl;
-    else cout << "Unstable" << endl;
+    if (flg) printf("Stable\n");
+    else printf("Not stable\n");
     for(int i = 0; i < n; i++) {
-        cout << A[i].name << " " << A[i].number << endl;
+        printf("%s %d\n", A[i].name, A[i].number);
     }
     return 0;
 }
