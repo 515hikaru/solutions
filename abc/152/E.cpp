@@ -1,33 +1,42 @@
 #include <cstdio>
 #include <iostream>
+#include <vector>
+#include <numeric>
+#include <boost/integer/common_factor.hpp>
+#include <boost/multiprecision/cpp_int.hpp>
+using namespace std;
+using boost::multiprecision::cpp_int;
 
-long gcd(long a, long b) {
-    if(a < b) {
-        std::swap(a, b);
-    }
+
+
+
+const int MOD = 1000000007;
+
+cpp_int gcd(cpp_int a, cpp_int b) {
+    if (a < b) swap(a, b);
     return b == 0 ? a : gcd(b, a % b);
 }
 
-long lcm(long a, long b) {
+cpp_int lcm(cpp_int a, cpp_int b) {
     return a * b / gcd(a, b);
 }
 
 int main() {
     int n;
     const int SIZE = 10007;
-    const long FOO = (1000000000 + 7);
-    long A[SIZE];
-    long prod = 1;
+
+    cpp_int A[SIZE];
     scanf("%d", &n);
-    for (int i = 0; i < n; i ++) {
-        scanf("%d", &A[i]);
-        prod = lcm(prod, A[i]);
+    for (auto i = 0; i < n; i ++) {
+        cin >> A[i];
     }
-    long sum = 0;
-    for(int i = 0; i < n; i++) {
-        sum += prod / A[i];
-        if (sum > FOO) sum = sum % FOO;
+    cpp_int prod = lcm(A[0], A[1]);
+    for(auto i = 2; i < n; i ++) prod = lcm(prod, cpp_int(A[i]));
+    cpp_int sum = 0;
+    for(auto i = 0; i < n; i++) {
+        sum += (prod / A[i]);
+        sum %=  MOD;
     }
-    printf("%ld\n", sum);
+    std::cout << sum << endl;
     return 0;
 }
